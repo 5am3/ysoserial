@@ -9,8 +9,8 @@
 
 基于原版的一个魔改版。
 
-[+] 在原版生成命令执行基础上，使其支持生成代码执行Payload
-[+] Add JRMPClient2 (https://xz.aliyun.com/t/2479#toc-1)
+- [+] 在原版生成命令执行基础上，使其支持生成代码执行Payload
+- [+] Add JRMPClient2 (https://xz.aliyun.com/t/2479#toc-1)
 
 ## Usage
 
