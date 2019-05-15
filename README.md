@@ -65,3 +65,9 @@ cd ysoserial
 mvn clean package -DskipTests
 java -jar ./target/ysoserial-0.0.6-SNAPSHOT-all.jar
 ```
+
+
+## 直接下载
+
+建议自行编译
+链接:https://pan.baidu.com/s/1FDF_7YQ_Dh8vBEow4xjUkg  密码:1eoh
